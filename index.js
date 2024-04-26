@@ -7,16 +7,15 @@ const main = async () => {
     host: 'localhost'
   })
 
-  server.route(routes);
+  server.route(routes)
 
-  await server.start();
-  console.log('Server running on %s', server.info.uri);
+  await server.start()
+  console.log('Server running on %s', server.info.uri)
 }
 
 process.on('unhandledRejection', (err) => {
-
-  console.log(err);
-  process.exit(1);
-});
+  console.log(err)
+  process.exit(1)
+})
 
 main()

@@ -1,8 +1,9 @@
-const { addBook, updateBook, removeBook, getBooks, getBook } = require("./bookshelf")
-const { validateAddBook, validateUpdateBook } = require("./validator")
+const {
+  addBook, updateBook, removeBook, getBooks, getBook
+} = require('./bookshelf')
+const { validateAddBook, validateUpdateBook } = require('./validator')
 
 const addBookToBookshelf = async (req, res) => {
-
   const validated = validateAddBook(req)
 
   if (validated !== undefined) {
@@ -11,15 +12,13 @@ const addBookToBookshelf = async (req, res) => {
   try {
     const added = addBook(req.payload)
     return res.response({ status: 'success', message: 'Buku berhasil ditambahkan', data: { bookId: added.id } }).code(201)
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error)
     return res.response({ status: 'error', message: 'Buku gagal ditambahkan' }).code(500)
   }
-
 }
 const getBookshelf = async (req, res) => {
-  const query = req.query
+  const { query } = req
   return res.response({ status: 'success', data: { books: getBooks(query) } }).code(200)
 }
 const getBookFromBookshelf = async (req, res) => {
@@ -29,8 +28,7 @@ const getBookFromBookshelf = async (req, res) => {
       return res.response({ status: 'fail', message: 'Buku tidak ditemukan' }).code(404)
     }
     return res.response({ status: 'success', data: { book } }).code(200)
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error)
     return res.response({ status: 'fail', message: 'Buku tidak ditemukan' }).code(404)
   }
@@ -43,15 +41,14 @@ const updateBookInBookshelf = async (req, res) => {
     return res.response(validated).code(400)
   }
 
-  const id = req.params.id
+  const { id } = req.params
   try {
     const updated = updateBook(req.payload, id)
     if (updated === undefined) {
       return res.response({ status: 'fail', message: 'Gagal memperbarui buku. Id tidak ditemukan' }).code(404)
     }
     return res.response({ status: 'success', message: 'Buku berhasil diperbarui' }).code(200)
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error)
     return res.response({ status: 'error', message: 'Buku gagal diperbarui' }).code(500)
   }
@@ -63,12 +60,12 @@ const deleteBookFromBookshelf = async (req, res) => {
       return res.response({ status: 'fail', message: 'Buku gagal dihapus. Id tidak ditemukan' }).code(404)
     }
     return res.response({ status: 'success', message: 'Buku berhasil dihapus' }).code(200)
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error)
     return res.response({ status: 'error', message: 'Buku gagal dihapus' }).code(500)
   }
 }
 
-
-module.exports = { addBookToBookshelf, getBookshelf, getBookFromBookshelf, updateBookInBookshelf, deleteBookFromBookshelf }
+module.exports = {
+  addBookToBookshelf, getBookshelf, getBookFromBookshelf, updateBookInBookshelf, deleteBookFromBookshelf
+}
