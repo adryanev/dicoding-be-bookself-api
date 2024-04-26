@@ -1,0 +1,41 @@
+{
+  "name": "dicoding-be-pemula",
+  "version": "1.0.0",
+  "description": "Dicoding BE Pemula Submission",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint ./",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adryanev/dicoding-be-bookself-api.git"
+  },
+  "keywords": [
+    "dicoding",
+    "backend",
+    "hapi",
+    "nodejs"
+  ],
+  "author": "Adryan Eka Vandra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adryanev/dicoding-be-bookself-api/issues"
+  },
+  "homepage": "https://github.com/adryanev/dicoding-be-bookself-api#readme",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "globals": "^15.0.0"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.3.9",
+    "nanoid": "^3.3.7"
+  }
+}
